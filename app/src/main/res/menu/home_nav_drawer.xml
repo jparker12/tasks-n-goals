@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group_view_type"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_home"
+            android:title="@string/home"
+            android:icon="@drawable/ic_outline_home_24"
+            android:checked="true" />
+        <item
+            android:id="@+id/item_tasks"
+            android:title="@string/tasks"
+            android:icon="@drawable/ic_outline_task_24" />
+        <item
+            android:id="@+id/item_goals"
+            android:title="@string/goals"
+            android:icon="@drawable/ic_outline_goal_24" />
+    </group>
+
+</menu>

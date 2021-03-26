@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="days">
+        <item quantity="one">@string/day</item>
+        <item quantity="other">@string/days</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">@string/week</item>
+        <item quantity="other">@string/weeks</item>
+    </plurals>
+    <plurals name="months">
+        <item quantity="one">@string/month</item>
+        <item quantity="other">@string/months</item>
+    </plurals>
+    <plurals name="years">
+        <item quantity="one">@string/year</item>
+        <item quantity="other">@string/years</item>
+    </plurals>
+    <plurals name="repeat_x_days_from_completion">
+        <item quantity="one">Repeat +%d day from completion</item>
+        <item quantity="other">Repeat +%d days from completion</item>
+    </plurals>
+    <plurals name="repeat_x_weeks_from_completion">
+        <item quantity="one">Repeat +%d week from completion</item>
+        <item quantity="other">Repeat +%d weeks from completion</item>
+    </plurals>
+    <plurals name="repeat_x_months_from_completion">
+        <item quantity="one">Repeat +%d month from completion</item>
+        <item quantity="other">Repeat +%d months from completion</item>
+    </plurals>
+    <plurals name="repeat_x_years_from_completion">
+        <item quantity="one">Repeat +%d year from completion</item>
+        <item quantity="other">Repeat +%d years from completion</item>
+    </plurals>
+</resources>
