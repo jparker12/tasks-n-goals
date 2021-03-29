@@ -8,6 +8,7 @@ import android.text.method.KeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.OverScroller
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
@@ -312,13 +313,18 @@ class TaskDetailActivity : AppCompatActivity() {
         }
 
 
-        binding.nestedScrollView.viewTreeObserver.addOnPreDrawListener(preDrawListener)
+        with(binding) {
+            // scroll so the card is in the center of the activity
+            nestedScrollView.viewTreeObserver.addOnPreDrawListener(preDrawListener)
+            // disable scroll ripple effects
+            nestedScrollView.overScrollMode = View.OVER_SCROLL_NEVER
+        }
     }
 
     val preDrawListener = ViewTreeObserver.OnPreDrawListener {
         with(binding) {
             val scrollTo = (nestedScrollView.height/2) - (mtrlCardTask.height/2) - (resources.displayMetrics.density*28f).toInt()
-            nestedScrollView.smoothScrollTo(0, scrollTo)
+            nestedScrollView.scrollTo(0, scrollTo)
         }
         removePreDrawListener()
         true

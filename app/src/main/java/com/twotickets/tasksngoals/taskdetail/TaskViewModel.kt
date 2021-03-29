@@ -29,6 +29,9 @@ class TaskViewModel(
         repeatInterval = RepeatInterval(1, RepeatInterval.TimeUnit.DAYS)
     )
 
+    // The task from the repo if taskId was supplied
+    private var repoTask: Task? = null
+
     val task = MutableLiveData<Task>()
 
     val actionMode = MutableLiveData<ActionMode>()
@@ -43,6 +46,7 @@ class TaskViewModel(
             viewModelScope.launch {
                 val repoTask = repository.getTask(taskId)
                 if (repoTask != null) {
+                    this@TaskViewModel.repoTask = repoTask
                     editTask = repoTask
                     task.value = editTask
                     actionMode.value = ActionMode.VIEW
@@ -60,6 +64,7 @@ class TaskViewModel(
 
     fun cancelEdit() {
         actionMode.value = ActionMode.VIEW
+        task.value = repoTask
     }
 
     fun deleteTask() {
