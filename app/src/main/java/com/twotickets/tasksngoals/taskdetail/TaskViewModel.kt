@@ -19,15 +19,7 @@ class TaskViewModel(
     private val repository: TaskRepository
 ) : AndroidViewModel(application) {
 
-    private var editTask = Task(
-        id = 0,
-        name = "",
-        notes = null,
-        deadlineDate = LocalDate.now(),
-        deadlineTime = null,
-        completedDateTime = null,
-        repeatInterval = RepeatInterval(1, RepeatInterval.TimeUnit.DAYS)
-    )
+    private var editTask = emptyTask()
 
     // The task from the repo if taskId was supplied
     private var repoTask: Task? = null
@@ -65,6 +57,7 @@ class TaskViewModel(
     fun cancelEdit() {
         actionMode.value = ActionMode.VIEW
         task.value = repoTask
+        editTask = repoTask?.copy() ?: emptyTask()
     }
 
     fun deleteTask() {
@@ -133,6 +126,16 @@ class TaskViewModel(
             }
         }
     }
+
+    private fun emptyTask() = Task(
+        id = 0,
+        name = "",
+        notes = null,
+        deadlineDate = LocalDate.now(),
+        deadlineTime = null,
+        completedDateTime = null,
+        repeatInterval = RepeatInterval(1, RepeatInterval.TimeUnit.DAYS)
+    )
 
     enum class ActionMode { CREATE, EDIT, VIEW }
 
